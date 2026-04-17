@@ -3,6 +3,7 @@ package edu.cmu.Weather;
 public class Weather {
     private WeatherService weatherService;
     private boolean inches;
+    
 
     /**
      * Sets the length scale for rainfall.
@@ -21,7 +22,7 @@ public class Weather {
      */
     public double getRainfall() {
         double wsRainfall = weatherService.getRainfall();
-        if (inches) {
+        if (!inches) {
             return wsRainfall / 25.4;
         } else {
             return wsRainfall;

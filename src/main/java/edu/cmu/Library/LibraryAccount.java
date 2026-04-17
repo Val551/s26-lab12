@@ -9,13 +9,17 @@ public class LibraryAccount {
      * share a single account, the user ID is of the form "libraryID:userName".
      * e.g., "12345:John Doe"
      *
-     * @param userId the ID of the user whose books are to be retrieved
+     * @param libraryId the libraryID of the user whose books are to be retrieved
+     * @param name the ID of the user whose books are to be retrieved
      * @return an array of Book objects the user has checked out
      */
-    public Book[] getBooks(String userId) {
-        String[] parts = userId.split(":");
-        String name = parts[0];
-        String id = parts[1];
-        return libraryService.getBooks(name, id);        
+
+    /*
+        This is a U1 violation because it makes the user manually encode and
+        format a string, rather than just passing two paramaters
+    
+    */
+    public Book[] getBooks(String libraryId, String name) {
+        return libraryService.getBooks(name, libraryId);        
     }
 }
